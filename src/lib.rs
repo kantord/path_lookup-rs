@@ -69,4 +69,14 @@ mod tests {
         let result = get_executables();
         assert!(!result.contains("asdfsdfadsfasdfdasfadsfadsfadsfafafdsfasf"));
     }
+
+    #[test]
+    fn iteration_and_hashmap_have_the_same_results() {
+        let mut results_from_iterator: HashSet<String> = HashSet::new();
+        for command in iterate_executables() {
+            results_from_iterator.insert(command);
+        }
+
+        assert_eq!(results_from_iterator, get_executables());
+    }
 }
