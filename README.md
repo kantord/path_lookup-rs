@@ -12,6 +12,14 @@ cargo add path_lookup
 
 ## Usage
 
+`iterate_executables()` returns an `Iterator<Item = String>`:
+
+```rust
+for command in iterate_executables() {
+    // ... etc ...
+}
+``
+
 `get_executables()` returns a `HashSet<String>`:
 
 ```rust
