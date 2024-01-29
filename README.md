@@ -18,7 +18,7 @@ cargo add path_lookup
 for command in iterate_executables() {
     // ... etc ...
 }
-``
+```
 
 `get_executables()` returns a `HashSet<String>`:
 
