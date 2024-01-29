@@ -1,9 +1,10 @@
 [package]
 name = "path_lookup"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "MIT"
 description = "Find all executables in the PATH environment variable."
+repository = "https://github.com/kantord/path_lookup-rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
