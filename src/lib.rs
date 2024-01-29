@@ -1,5 +1,7 @@
 use std::{collections::HashSet, env, fs};
 
+/// Returns all exectuabqles found in $PATH as a HashSet<String>.
+/// There is no performance penalty compared to iteration.
 pub fn get_executables() -> HashSet<String> {
     let serialized_paths = env::var("PATH").expect("Could not read PATH variable");
     let deserialized_paths = serialized_paths.split(":");
@@ -32,6 +34,21 @@ pub fn get_executables() -> HashSet<String> {
     }
 
     results
+}
+
+/// Returns an iterator of the exectuables found in $PATH.
+/// Note that it still allocates memory because it is necessary to
+/// deduplicate the results.
+pub fn iterate_executables() -> impl Iterator<Item = String> {
+    // I spent significant amount of time realizing that allocating a data structure
+    // for deduplication purposes is necessary, thus iteration without memory allocation
+    // is not possible.
+
+    // This function is functionally redundant, but it can save time by signaling
+    // that is is already the optimal iteration algorithm. It also leaves the door
+    // open for any future optimization without breaking changes.
+
+    get_executables().into_iter()
 }
 
 #[cfg(test)]
